@@ -1,20 +1,22 @@
+//heavily edit this widget
+
 import 'package:flutter/material.dart';
-import 'package:wild_eye/Objects/fauna.dart';
+import 'package:to_dont_list/objects/flora.dart';
 
 
-typedef ToDoListChangedCallback = Function(Fauna item, bool completed);
-typedef ToDoListRemovedCallback = Function(Fauna item);
+typedef ToDoListChangedCallback = Function(Flora item, bool completed);
+typedef ToDoListRemovedCallback = Function(Flora item);
 
 
 class FloraListItem extends StatefulWidget {
   FloraListItem(
-      {required this.fauna,
+      {required this.flora,
       required this.completed,
       required this.onListChanged,
       required this.onDeleteItem})
-      : super(key: ObjectKey(fauna));
+      : super(key: ObjectKey(flora));
 
-  final Fauna fauna;
+  final Flora flora;
   final bool completed;
 
   final ToDoListChangedCallback onListChanged;
@@ -50,23 +52,28 @@ class _FloraListItemState extends State<FloraListItem> {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
+        //onListChanged(item, false);
+        //item.addNumLocation();
       },
       onLongPress: widget.completed
           ? () {
+              //onDeleteItem(item);
             }
           : null,
       leading: ElevatedButton(
         onPressed:() {
           setState(() {
-            widget.fauna.addNumLocation(); //edit this
+            widget.flora.addNumLocation();
           });
         },
-        style: ElevatedButton.styleFrom(backgroundColor: widget.fauna.type.rgbColor), //change
-        child: Text (widget.fauna.getNumLocations()),
+        style: ElevatedButton.styleFrom(backgroundColor: widget.flora.type.rgbColor),
+        //backgroundColor: _getColor(context),
+        child: Text (widget.flora.getNumLocations()),
          
+         //title and circle avatar child were switched around
       ),
       title: Text(
-        widget.fauna.name,
+        widget.flora.name,
         style: widget._getTextStyle(context),
       ),
     );

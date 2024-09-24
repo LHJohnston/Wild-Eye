@@ -1,0 +1,1 @@
+//maybe only need one dialog for flora and fauna
