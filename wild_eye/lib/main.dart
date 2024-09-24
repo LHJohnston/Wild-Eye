@@ -36,37 +36,41 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class FloraList extends StatefulWidget {
-  const FloraList({super.key});
 
-  @override
-  State<FloraList> createState() => _FloraListState();
-}
+class ButtonWithText extends StatelessWidget {
+  const ButtonWithText({
+    super.key,
+    required this.color,
+    required this.icon,
+    required this.label,
+  });
 
-class _FloraListState extends State<FloraList> {
+  final Color color;
+  final IconData icon;
+  final String label;
+
   @override
   Widget build(BuildContext context) {
-    return const Column(mainAxisSize: MainAxisSize.max, children: [
-      SingleChildScrollView(child: Text('flora'),),
-    ],);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
-class FaunaList extends StatefulWidget {
-  const FaunaList({super.key});
-
-  @override
-  State<FaunaList> createState() => _FaunaListState();
-}
-
-class _FaunaListState extends State<FaunaList> {
-  @override
-  Widget build(BuildContext context) {
-    return const Column(mainAxisSize: MainAxisSize.max, children: [
-      SingleChildScrollView(child: Text('fauna'),),
-    ],);
-  }
-}
-
 
 class ButtonSection extends StatelessWidget {
   const ButtonSection({super.key});
@@ -105,8 +109,8 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            FloraList(),
-            FaunaList(),
+            ButtonWithText(color: Colors.green, icon: Icons.nature, label: 'Flora'),
+            ButtonWithText(color: Colors.green, icon: Icons.agriculture, label: 'Fauna'),
             ButtonSection(),
             ],
         ),
