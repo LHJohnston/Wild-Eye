@@ -21,19 +21,17 @@ class FloraFaunaButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[Expanded( child: ElevatedButton(onPressed: () {},
-       child: const Text('Flora'))), 
-       ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+      //mainAxisSize: MainAxisSize.max,
+      children: <Widget>[ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => FloraList(
-                  // Pass the automatically generated path to
-                  // the DisplayPictureScreen widget.
                 ),
               ),
             );},
-       child: const Text('Fauna')) ],
-    );
+       child: const Text('Flora')), 
+       ElevatedButton(onPressed: () {}, 
+       child: const Text('Fauna'))]);
+    
   }
 }
 
@@ -69,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             FloraFaunaButtons(),
             ButtonSection(),
