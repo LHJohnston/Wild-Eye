@@ -1,86 +1,114 @@
 import 'package:flutter/material.dart';
-//heavily edit this
 
-class ToDoList extends StatefulWidget {
-  const ToDoList({super.key});
-
-  @override
-  State createState() => _ToDoListState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _ToDoListState extends State<ToDoList> {
-  final List<Flora> items = [Flora(name: "add more flora", type: FloraType.weed)];
-  final _itemSet = <Flora>{};
 
-  void _handleListChanged(Flora item, bool completed) {
-    setState(() {
-      // When a user changes what's in the list, you need
-      // to change _itemSet inside a setState call to
-      // trigger a rebuild.
-      // The framework then calls build, below,
-      // which updates the visual appearance of the app.
-
-      items.remove(item);
-      if (!completed) {
-        print("Completing");
-        _itemSet.add(item);
-        items.add(item);
-      } else {
-        print("Making Undone");
-        _itemSet.remove(item);
-        items.insert(0, item);
-      }
-    });
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'WildEye',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 25, 140, 29)),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Home'),
+    );
   }
+}
 
-  void _handleDeleteItem(Flora item) {
-    setState(() {
-      print("Deleting item");
-      items.remove(item);
-    });
-  }
 
-  void _handleNewItem(String itemText, TextEditingController textController) {
-    setState(() {
-      print("Adding new item");
-      Flora item = Flora(name: itemText, type: FloraType.weed);
-      items.insert(0, item);
-      textController.clear();
-    });
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  // This widget is the home page of your application
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class FloraList extends StatefulWidget {
+  const FloraList({super.key});
+
+  @override
+  State<FloraList> createState() => _FloraListState();
+}
+
+class _FloraListState extends State<FloraList> {
+  @override
+  Widget build(BuildContext context) {
+    return const Column(mainAxisSize: MainAxisSize.max, children: [
+      SingleChildScrollView(child: Text('flora'),),
+    ],);
   }
+}
+class FaunaList extends StatefulWidget {
+  const FaunaList({super.key});
+
+  @override
+  State<FaunaList> createState() => _FaunaListState();
+}
+
+class _FaunaListState extends State<FaunaList> {
+  @override
+  Widget build(BuildContext context) {
+    return const Column(mainAxisSize: MainAxisSize.max, children: [
+      SingleChildScrollView(child: Text('fauna'),),
+    ],);
+  }
+}
+
+
+class ButtonSection extends StatelessWidget {
+  const ButtonSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ElevatedButton(onPressed: () {},
+                child: const Icon(Icons.location_on)),
+                ElevatedButton(onPressed: (){},
+                child: const Icon(Icons.add),),
+              ]
+            );
+  
+    
+  }
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  //final List<flora> floralist;
+  //final _floraSet = <flora>{};
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Flora'),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Wild-Eye')
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            FloraList(),
+            FaunaList(),
+            ButtonSection(),
+            ],
         ),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: items.map((item) {
-            return FloraListItem(
-              flora: item,
-              completed: _itemSet.contains(item),
-              onListChanged: _handleListChanged,
-              onDeleteItem: _handleDeleteItem,
-            );
-          }).toList(),
-        ),
-        floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (_) {
-                    return ToDoDialog(onListAdded: _handleNewItem);
-                  });
-            }));
+       
+      ),
+      
+    );
   }
-}
 
-void main() {
-  runApp(const MaterialApp(
-    title: 'To Do List',
-    home: ToDoList(),
-  ));
 }

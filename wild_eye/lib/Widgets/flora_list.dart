@@ -58,10 +58,10 @@ class _FloraListItemState extends State<FloraListItem> {
       leading: ElevatedButton(
         onPressed:() {
           setState(() {
-            widget.flora.addNumLocation(); //edit this
+           // widget.flora.addNumLocation(); //edit this
           });
         },
-        style: ElevatedButton.styleFrom(backgroundColor: widget.flora.type.rgbColor), //change
+        //style: ElevatedButton.styleFrom(backgroundColor: widget.flora.type.rgbColor), //change
         child: Text (widget.flora.getNumLocations()),
          
       ),
