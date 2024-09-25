@@ -13,7 +13,20 @@ class HomeScreen extends StatefulWidget {
 
 
 
+class FloraFaunaButtons extends StatelessWidget {
+  const FloraFaunaButtons({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[ElevatedButton(onPressed: () {},
+       child: const Text('Flora')), 
+       ElevatedButton(onPressed: () {},
+       child: const Text('Fauna')) ],
+    );
+  }
+}
 
 class ButtonSection extends StatelessWidget {
   const ButtonSection({super.key});
@@ -49,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            
+            FloraFaunaButtons(),
             ButtonSection(),
             ],
         ),
