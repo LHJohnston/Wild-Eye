@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:wild_eye/pages/flora_list_display.dart';
 
 
 
@@ -19,10 +20,18 @@ class FloraFaunaButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
-      children: <Widget>[ElevatedButton(onPressed: () {},
-       child: const Text('Flora')), 
-       ElevatedButton(onPressed: () {},
+      children: <Widget>[Expanded( child: ElevatedButton(onPressed: () {},
+       child: const Text('Flora'))), 
+       ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FloraList(
+                  // Pass the automatically generated path to
+                  // the DisplayPictureScreen widget.
+                ),
+              ),
+            );},
        child: const Text('Fauna')) ],
     );
   }

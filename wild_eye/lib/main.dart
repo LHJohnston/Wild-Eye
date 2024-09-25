@@ -1,12 +1,12 @@
 import 'dart:async';
-import 'package:wild_eye/pages/HomeScreen.dart';
+import 'package:wild_eye/pages/home_screen.dart';
 
 import 'package:flutter/material.dart';
 
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: HomeScreen(),
     )
   );
