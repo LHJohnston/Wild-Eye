@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/pages/flora_list_display.dart';
+import 'package:wild_eye/pages/fauna_list_display.dart';
 
 
 
@@ -29,7 +30,12 @@ class FloraFaunaButtons extends StatelessWidget {
               ),
             );},
        child: const Text('Flora')), 
-       ElevatedButton(onPressed: () {}, 
+       ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FaunaList(
+                ),
+              ),
+            );}, 
        child: const Text('Fauna'))]);
     
   }
