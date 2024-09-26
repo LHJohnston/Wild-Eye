@@ -15,7 +15,7 @@ class _MapDisplayState extends State<MapDisplay> {
   Widget build(BuildContext context) {
 return FlutterMap(
     options: MapOptions(
-      initialCenter: LatLng(51.509364, -0.128928), // Center the map over London
+      initialCenter: LatLng(35.090328, -92.441559), 
       initialZoom: 9.2,
     ),
     children: [
