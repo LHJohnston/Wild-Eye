@@ -14,10 +14,15 @@ class FloraDialog extends StatefulWidget {
   @override
   State<FloraDialog> createState() => _ToDoDialogState();
 }
-enum faunaorFlora{
+ enum faunaorFlora{
   fauna,
   flora,
 }
+const List<(faunaorFlora, String)> lifeOptions = <(faunaorFlora, String)>[
+  (faunaorFlora.fauna, "fauna"),
+  (faunaorFlora.flora, "flora"),
+
+];
 
 class _ToDoDialogState extends State<FloraDialog> {
   // Dialog with text from https://www.appsdeveloperblog.com/alert-dialog-with-a-text-field-in-flutter/
@@ -32,7 +37,8 @@ class _ToDoDialogState extends State<FloraDialog> {
       textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
 
   String valueText = "";
- //String dropdownvalue = 
+  final List<bool> _toggleButtonSelection = faunaorFlora.values.map((faunaorFlora e) => e == faunaorFlora.fauna).toList();
+
   
  
   
@@ -43,17 +49,33 @@ class _ToDoDialogState extends State<FloraDialog> {
     return AlertDialog(
       title: const Text('Add Item'),
       content: Column(children: [
-        //DropdownButton<faunaorFlora>(
-          //value: dropdownvalue,
-          //onChanged: (faunaorFlora? newValue){
-            //setState(() {
-            //  choice = newValue!;
-           // });
-          //},
-          //icon: const Icon(Icons.arrow_downward), 
-          //items: faunaorFlora.values.map((faunaorFlora classType){
-           // return DropdownMenuItem<faunaorFlora>(value: classType, child: Text(classType.name));
-          //}).toList()),
+        /*DropdownButton<faunaorFlora>(
+          value: faunaorFlora classType,
+          onChanged: (faunaorFlora? newValue){
+            setState(() {
+              classType = newValue!;
+            });
+          },
+          icon: const Icon(Icons.arrow_downward), 
+          items: faunaorFlora.values.map((faunaorFlora classType){
+            return DropdownMenuItem<faunaorFlora>(value: classType, child: Text(classType.name.toString()));
+          }).toList()),*/
+          ToggleButtons(
+          isSelected: _toggleButtonSelection,
+          onPressed: (int index){
+            setState(() {
+              _toggleButtonSelection[index] = !_toggleButtonSelection[index];
+                },
+                );
+              },
+          
+          children: const <Widget>[
+            Icon(Icons.circle),
+            Icon(Icons.square)
+
+          ],
+
+          ),
        TextField(
         onChanged: (value) {
           setState(() {
