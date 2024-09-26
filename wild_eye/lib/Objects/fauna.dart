@@ -7,9 +7,9 @@ class Fauna {
   final String name;
 
   final Location location;
-  
-  List locations;
 
+  List<Location> locations = [];
+  
   int numLocations = 1;
   
 

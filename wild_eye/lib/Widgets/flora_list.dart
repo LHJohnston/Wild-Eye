@@ -33,16 +33,15 @@ class _FloraListItemState extends State<FloraListItem> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      //onTap://
-        //() async {await Navigator.of(context).push(
-              //MaterialPageRoute(
-                //builder: (context) => FloraInfoDisplay(widget.flora)(
-                //),
-              //),
+      onTap:
+        () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FloraInfoDisplay(flora: widget.flora),
+              ),
             
-            //);
+            );
         //HomeScreen: flora_dialog
-      //},
+      },
       
       onLongPress: 
            () {

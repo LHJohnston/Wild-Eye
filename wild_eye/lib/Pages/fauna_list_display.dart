@@ -11,7 +11,7 @@ class FaunaList extends StatefulWidget {
 }
 
 class _FaunaListState extends State<FaunaList> {
-  final List<Fauna> items = [Fauna(name: "add more fauna", locations: [Location(locationName:"here", numItems: 5)] )];
+  final List<Fauna> items = [Fauna(name: "add more fauna", location: Location(locationName:"here", numItems: 5) )];
   final _itemSet = <Fauna>{};
 
   void _handleListChanged(Fauna item) {

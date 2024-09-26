@@ -11,7 +11,7 @@ class FloraList extends StatefulWidget {
 }
 
 class _FloraListState extends State<FloraList> {
-  final List<Flora> items = [Flora(name: "add more flora", locations: [Location(locationName:"here", numItems: 5)] )];
+  final List<Flora> items = [Flora(name: "add more flora", location: Location(locationName:"here", numItems: 5) )];
   final _itemSet = <Flora>{};
 
   /*void _handleListChanged(Flora item) {

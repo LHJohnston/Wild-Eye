@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
 import 'package:wild_eye/Objects/flora.dart';
+import 'package:wild_eye/Pages/fauna_info_screen.dart';
 
 
 typedef ToDoListChangedCallback = Function(Fauna item);
@@ -33,7 +34,13 @@ class _FaunaListItemState extends State<FaunaListItem> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {
+      onTap:
+        () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FaunaInfoDisplay(fauna: widget.fauna),
+              ),
+            
+            );
         //HomeScreen: flora_dialog
       },
       onLongPress: 
