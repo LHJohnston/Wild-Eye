@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 typedef FloraListAddedCallback = Function(
-    TextEditingController textConroller, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments);
+    TextEditingController textConroller, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController locnumber, TextEditingController comments);
 
 class FloraDialog extends StatefulWidget {
   const FloraDialog({
@@ -14,6 +14,10 @@ class FloraDialog extends StatefulWidget {
   @override
   State<FloraDialog> createState() => _ToDoDialogState();
 }
+enum faunaorFlora{
+  fauna,
+  flora,
+}
 
 class _ToDoDialogState extends State<FloraDialog> {
   // Dialog with text from https://www.appsdeveloperblog.com/alert-dialog-with-a-text-field-in-flutter/
@@ -21,13 +25,17 @@ class _ToDoDialogState extends State<FloraDialog> {
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _sightingsController = TextEditingController();
   final TextEditingController _commentsController = TextEditingController();
+  final TextEditingController _locnumberController = TextEditingController();
   final ButtonStyle yesStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.green);
   final ButtonStyle noStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
 
   String valueText = "";
-  List florafaunalist = ['flora', 'fauna'];
+ //String dropdownvalue = 
+  
+ 
+  
   
 
   @override
@@ -35,15 +43,17 @@ class _ToDoDialogState extends State<FloraDialog> {
     return AlertDialog(
       title: const Text('Add Item'),
       content: Column(children: [
-        DropdownButton(
-          items: florafaunalist, 
-          onChanged: (value){
-            setState(() {
-              
-            });
-          }
-          ),
-      
+        //DropdownButton<faunaorFlora>(
+          //value: dropdownvalue,
+          //onChanged: (faunaorFlora? newValue){
+            //setState(() {
+            //  choice = newValue!;
+           // });
+          //},
+          //icon: const Icon(Icons.arrow_downward), 
+          //items: faunaorFlora.values.map((faunaorFlora classType){
+           // return DropdownMenuItem<faunaorFlora>(value: classType, child: Text(classType.name));
+          //}).toList()),
        TextField(
         onChanged: (value) {
           setState(() {
@@ -60,8 +70,17 @@ class _ToDoDialogState extends State<FloraDialog> {
           });
         },
         controller: _locationController,
-        decoration: const InputDecoration(hintText: "Location"),
+        decoration: const InputDecoration(hintText: "Location Name"),
       ),
+      TextField(
+        onChanged: (value) {
+          setState(() {
+            valueText = value;
+          });
+        },
+        controller: _locnumberController,
+        decoration: const InputDecoration(hintText: "Location Number"),
+        ),
       TextField(
         onChanged: (value) {
           setState(() {
@@ -82,8 +101,6 @@ class _ToDoDialogState extends State<FloraDialog> {
         ),
       ],
       ),
-    
-      
       actions: <Widget>[
         ElevatedButton(
           key: const Key("CancelButton"),
