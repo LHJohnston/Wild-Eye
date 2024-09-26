@@ -2,12 +2,14 @@
 import 'package:wild_eye/Objects/location.dart';
 
 class Fauna {
-  Fauna({required this.name, required this.locations});
+  Fauna({required this.name, required this.location});
 
   final String name;
-  
-  List locations;
 
+  final Location location;
+
+  List<Location> locations = [];
+  
   int numLocations = 1;
   
 
@@ -23,5 +25,9 @@ class Fauna {
 
   List getLocations(){
     return locations;
+  }
+
+  String getName(){
+    return name;
   }
 }

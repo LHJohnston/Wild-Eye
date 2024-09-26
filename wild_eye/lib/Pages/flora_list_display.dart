@@ -11,10 +11,10 @@ class FloraList extends StatefulWidget {
 }
 
 class _FloraListState extends State<FloraList> {
-  final List<Flora> items = [Flora(name: "add more flora", locations: [Location(locationName:"here", numItems: 5)] )];
+  final List<Flora> items = [Flora(name: "add more flora", location: Location(locationName:"here", numItems: 5) )];
   final _itemSet = <Flora>{};
 
-  void _handleListChanged(Flora item) {
+  /*void _handleListChanged(Flora item) {
     setState(() {
       // When a user changes what's in the list, you need
       // to change _itemSet inside a setState call to
@@ -24,12 +24,28 @@ class _FloraListState extends State<FloraList> {
 
 
     });
-  }
+  }*/
 
-  void _handleDeleteItem(Flora item) {
+  void _handleDeleteItem(Flora flora) {
     setState(() {
       print("Deleting item");
-      items.remove(item);
+      //_itemSet.remove(item);
+      items.remove(flora);
+    });
+  }
+
+  void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber) {
+    setState(() {
+      print("Adding new item");
+      Flora flora = Flora(name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)));
+      //_itemSet.add(item);
+      items.insert(0, flora);
+      textController.clear();
+      txtcontroller.clear();
+      txtcontrol.clear();
+      comments.clear();
+      locnumber.clear();
+      
     });
   }
 

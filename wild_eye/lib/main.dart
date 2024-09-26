@@ -1,7 +1,7 @@
-import 'dart:async';
-import 'package:wild_eye/pages/home_screen.dart';
 
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:wild_eye/Pages/home_screen.dart';
 
 
 void main() {
@@ -11,15 +11,3 @@ void main() {
     )
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-

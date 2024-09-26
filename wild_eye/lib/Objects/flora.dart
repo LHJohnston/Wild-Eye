@@ -1,11 +1,13 @@
 import 'package:wild_eye/Objects/location.dart';
 
 class Flora {
-  Flora({required this.name, required this.locations});
+  Flora({required this.name, required this.location});
 
   final String name;
+
+  final Location location;
   
-  List locations;
+  List<Location> locations = [];
 
   int numLocations = 1;
   
@@ -22,5 +24,9 @@ class Flora {
 
   List getLocations(){
     return locations;
+  }
+
+  String getName(){
+    return name;
   }
 }
