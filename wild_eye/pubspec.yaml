@@ -39,10 +39,15 @@ dependencies:
   camera: ^0.11.0+2
   path_provider:
   path:
+  latlong2: ^0.9.1
+  flutter_map: ^7.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_map:
+     git:
+    url: https://github.com/fleaflet/flutter_map.git
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
