@@ -125,7 +125,7 @@ class _ToDoDialogState extends State<FloraDialog> {
                   ? () {
                     
                       setState(() {
-                        widget.onListAdded(_nameController, _locationController, _sightingsController, _commentsController);
+                        widget.onListAdded(_nameController, _locationController, _sightingsController, _commentsController, _locnumberController);
                         Navigator.pop(context);
                       });
                     }
