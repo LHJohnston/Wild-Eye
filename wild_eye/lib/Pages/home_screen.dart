@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/pages/flora_list_display.dart';
 import 'package:wild_eye/pages/fauna_list_display.dart';
+import 'package:wild_eye/pages/map_display.dart';
 
 
 
