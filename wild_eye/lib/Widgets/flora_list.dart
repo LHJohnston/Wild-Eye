@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wild_eye/HomeScreen.dart';
 import 'package:wild_eye/Objects/flora.dart';
+import 'package:wild_eye/Pages/flora_info_screen.dart';
 
 
 typedef ToDoListChangedCallback = Function(Flora item);
@@ -20,7 +20,7 @@ class FloraListItem extends StatefulWidget {
 
     return const TextStyle(
       color: Colors.black54,
-      decoration: TextDecoration.lineThrough,
+      //decoration: TextDecoration.lineThrough,
     );
   }
 
@@ -33,9 +33,17 @@ class _FloraListItemState extends State<FloraListItem> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {
+      //onTap://
+        //() async {await Navigator.of(context).push(
+              //MaterialPageRoute(
+                //builder: (context) => FloraInfoDisplay(widget.flora)(
+                //),
+              //),
+            
+            //);
         //HomeScreen: flora_dialog
-      },
+      //},
+      
       onLongPress: 
            () {
             }

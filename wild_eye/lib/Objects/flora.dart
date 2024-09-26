@@ -23,4 +23,8 @@ class Flora {
   List getLocations(){
     return locations;
   }
+
+  String getName(){
+    return name;
+  }
 }

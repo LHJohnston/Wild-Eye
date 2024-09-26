@@ -24,4 +24,8 @@ class Fauna {
   List getLocations(){
     return locations;
   }
+  
+  String getName(){
+    return name;
+  }
 }

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:wild_eye/Objects/flora.dart';
+import 'package:wild_eye/Objects/fauna.dart';
 import 'package:wild_eye/Objects/location.dart';
-import 'package:wild_eye/Widgets/flora_list.dart';
+import 'package:wild_eye/Widgets/fauna_list.dart';
 
-class FloraList extends StatefulWidget {
-  const FloraList({super.key});
+class FaunaList extends StatefulWidget {
+  const FaunaList({super.key});
 
   @override
-  State createState() => _FloraListState();
+  State createState() => _FaunaListState();
 }
 
-class _FloraListState extends State<FloraList> {
-  final List<Flora> items = [Flora(name: "add more flora", locations: [Location(locationName:"here", numItems: 5)] )];
-  final _itemSet = <Flora>{};
+class _FaunaListState extends State<FaunaList> {
+  final List<Fauna> items = [Fauna(name: "add more fauna", locations: [Location(locationName:"here", numItems: 5)] )];
+  final _itemSet = <Fauna>{};
 
-  /*void _handleListChanged(Flora item) {
+  void _handleListChanged(Fauna item) {
     setState(() {
       // When a user changes what's in the list, you need
       // to change _itemSet inside a setState call to
@@ -24,9 +24,9 @@ class _FloraListState extends State<FloraList> {
 
 
     });
-  }*/
+  }
 
-  void _handleDeleteItem(Flora item) {
+  void _handleDeleteItem(Fauna item) {
     setState(() {
       print("Deleting item");
       items.remove(item);
@@ -38,13 +38,13 @@ class _FloraListState extends State<FloraList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Flora'),
+          title: const Text('Fauna'),
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           children: items.map((item) {
-            return FloraListItem(
-              flora: item,
+            return FaunaListItem(
+              fauna: item,
               
             );
           }).toList(),
