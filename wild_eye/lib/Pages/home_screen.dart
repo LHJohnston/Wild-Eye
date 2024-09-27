@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Color(Colors.green.value),
         title: const Text('Wild-Eye')
       ),
       body: Center(
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             );
-            }, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
+            }, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0),)),
              child: const Text('Flora'),)),
             SizedBox(height: 10),
             Expanded(child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
