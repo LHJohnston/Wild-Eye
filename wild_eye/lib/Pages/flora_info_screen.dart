@@ -32,12 +32,57 @@ class _FloraInfoDisplayState extends State<FloraInfoDisplay> {
       body: Center(
         child: Column(
           children: [
-            /*ListView.builder(itemCount: widget.flora.getLocations().length, itemBuilder: (BuildContext context, int index){
-              return Container(height: 50, child: Center(child: Text('${widget.flora.getLocations()[index]}'),),);
-            },),*/
             
+            const SizedBox(height: 20),
+              Container(
+                width: 300,
+                height: 150,
+                color: Colors.grey.shade300,
+                child:  Center(child: Text("picture", 
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                )
+                )
+              ), 
+            const SizedBox(height: 10),
+            Text("Location:", style: TextStyle(fontSize: 20)),
+            const SizedBox(height: 10),
+              Container(
+                width: 200,
+                height: 50,
+                color: Colors.grey.shade300,
+                child:  Center(child: Text("set location here", 
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                )
+                )
+              ),
+              const SizedBox(height: 10),
+              const Text(
+              'Number sighted:', style: TextStyle(fontSize: 20)
+            ),
+            Row(children: [
             Text(
-              widget.flora.getinfo())
+              widget.flora.numsightings.toString(),
+              style: Theme.of(context).textTheme.headlineMedium,
+            ), 
+            FloatingActionButton(onPressed: () {setState(() {widget.flora.addSighting();
+            });}, child: Icon(Icons.add)),
+            ],
+            ),
+            
+
+            Text(
+              "Additional Info", style: TextStyle(fontSize: 20),
+              ),
+            const SizedBox(height: 10),
+              Container(
+                width: 300,
+                height: 100,
+                color: Colors.grey.shade300,
+                child:  Center(child: Text(widget.flora.getinfo(), 
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                )
+                )
+              ), 
       
           ]
         ),

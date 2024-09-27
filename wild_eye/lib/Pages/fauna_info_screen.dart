@@ -29,12 +29,62 @@ class _FaunaInfoDisplayState extends State<FaunaInfoDisplay> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.fauna.getName())
       ),
-      body: const Center(
+      body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             
+            const SizedBox(height: 20),
+              Container(
+                width: 300,
+                height: 150,
+                color: Colors.grey.shade300,
+                child:  Center(child: Text("picture", 
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                )
+                )
+              ), 
+            const SizedBox(height: 10),
+            Text("Location:", style: TextStyle(fontSize: 20)),
+            const SizedBox(height: 10),
+              Container(
+                width: 200,
+                height: 50,
+                color: Colors.grey.shade300,
+                child:  Center(child: Text("set location here", 
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                )
+                )
+              ),
+              const SizedBox(height: 10),
+              const Text(
+              'Number sighted:', style: TextStyle(fontSize: 20)
+            ),
+            Row(children: [
+            Text(
+              widget.fauna.numsightings.toString(),
+              style: Theme.of(context).textTheme.headlineMedium,
+            ), 
+           FloatingActionButton(onPressed: () {setState(() {widget.fauna.addSighting();
+            });}, child: Icon(Icons.add))
             ],
+            ),
+            
+
+            Text(
+              "Additional Info", style: TextStyle(fontSize: 20),
+              ),
+            const SizedBox(height: 10),
+              Container(
+                width: 300,
+                height: 100,
+                color: Colors.grey.shade300,
+                child:  Center(child: Text(widget.fauna.getinfo(), 
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                )
+                )
+              ), 
+      
+          ]
         ),
        
       ),
