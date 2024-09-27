@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
 import 'package:wild_eye/Objects/location.dart';
@@ -5,8 +6,8 @@ import 'package:wild_eye/Widgets/fauna_list.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
 
 class FaunaList extends StatefulWidget {
-  const FaunaList({super.key});
-
+  const FaunaList({super.key, required this.camera,});
+  final CameraDescription camera;
   @override
   State createState() => _FaunaListState();
 }

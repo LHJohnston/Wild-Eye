@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
 import 'package:wild_eye/pages/flora_list_display.dart';
@@ -8,9 +9,9 @@ import 'package:wild_eye/pages/map_display.dart';
 
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key,});
+  const HomeScreen({super.key, required this.thecamera});
   // This widget is the home page of your application
-
+ final CameraDescription thecamera;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 
 class FloraFaunaButtons extends StatelessWidget {
-  const FloraFaunaButtons({super.key});
+  const FloraFaunaButtons({super.key, CameraDescription cam});
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,14 @@ class FloraFaunaButtons extends StatelessWidget {
       //mainAxisSize: MainAxisSize.max,
       children: <Widget>[ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => FloraList(
+                builder: (context) => FloraList(camera: thecamera
                 ),
               ),
             );},
        child: const Text('Flora')), 
        ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => FaunaList(
+                builder: (context) => FaunaList(camera: thecamera
                 ),
               ),
             );}, 
@@ -76,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FloraFaunaButtons(),
+            FloraFaunaButtons(thecamera),
             ButtonSection(),
             ],
         ),
