@@ -28,20 +28,37 @@ class FloraFaunaButtons extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       //mainAxisSize: MainAxisSize.max,
-      children: <Widget>[ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+      children: <Widget>[
+        Column(children: [Expanded(
+            child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => FloraList(
                 ),
               ),
-            );},
-       child: const Text('Flora')), 
+            );
+            },
+       child: const Text('Flora')
+          ), 
+       ),]),
+           
+       
        ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => FaunaList(
                 ),
               ),
-            );}, 
-       child: const Text('Fauna'))]);
+            );
+            }, 
+       child: const Text('Fauna')),
+       ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => MapDisplay(
+                ),
+              ),
+            );},
+                child: const Icon(Icons.location_on)),
+       ]
+       );
     
   }
 }
@@ -53,6 +70,7 @@ class ButtonSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
@@ -78,14 +96,45 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Wild-Eye')
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FloraFaunaButtons(),
-            ButtonSection(),
-            ],
-        ),
+      body: Center(
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+            Expanded(child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FloraList(
+                ),
+              ),
+            );
+            }, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
+             child: const Text('Flora'),)),
+            SizedBox(height: 10),
+            Expanded(child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FaunaList(
+                ),
+              ),
+            );
+            },  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
+            child: const Text('Fauna'),)),
+            
+            //FloraFaunaButtons(),
+            //ButtonSection(),
+            Row( children: [ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => MapDisplay(
+                ),
+              ),
+            );},
+                child: const Icon(Icons.location_on))],
+              
+            )],
+            ),
+
+          
+        
        
       ),
       
