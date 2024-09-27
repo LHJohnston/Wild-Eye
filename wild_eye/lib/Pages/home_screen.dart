@@ -1,8 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:wild_eye/Pages/take_picture.dart';
+import 'package:wild_eye/Widgets/flora_dialog.dart';
 import 'package:wild_eye/pages/flora_list_display.dart';
 import 'package:wild_eye/pages/fauna_list_display.dart';
+import 'package:wild_eye/pages/map_display.dart';
 
 
 
@@ -54,7 +55,9 @@ class FloraFaunaButtons extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       //mainAxisSize: MainAxisSize.max,
-      children: <Widget>[ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+      children: <Widget>[
+        Column(children: [Expanded(
+            child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => FloraList(camera: camera)
                 
