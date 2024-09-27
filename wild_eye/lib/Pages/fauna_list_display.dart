@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
 import 'package:wild_eye/Objects/location.dart';
 import 'package:wild_eye/Widgets/fauna_list.dart';
+import 'package:wild_eye/Widgets/flora_dialog.dart';
 
 class FaunaList extends StatefulWidget {
   const FaunaList({super.key});
@@ -64,6 +65,12 @@ class _FaunaListState extends State<FaunaList> {
             );
           }).toList(),
         ),
+        floatingActionButton: FloatingActionButton(onPressed: () {showDialog(
+                  context: context,
+                  builder: (_) {
+                    return FloraDialog(onListAdded: _handleNewItem);
+                  });}, 
+                child: const Icon(Icons.add),),
         );
   }
 }
