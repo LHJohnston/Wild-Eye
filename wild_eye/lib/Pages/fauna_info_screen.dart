@@ -64,7 +64,8 @@ class _FaunaInfoDisplayState extends State<FaunaInfoDisplay> {
               widget.fauna.numsightings.toString(),
               style: Theme.of(context).textTheme.headlineMedium,
             ), 
-            FloatingActionButton(onPressed: widget.fauna.addSighting, child: Icon(Icons.add)),
+           FloatingActionButton(onPressed: () {setState(() {widget.fauna.addSighting();
+            });}, child: Icon(Icons.add))
             ],
             ),
             

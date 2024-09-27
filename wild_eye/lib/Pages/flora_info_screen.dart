@@ -64,7 +64,8 @@ class _FloraInfoDisplayState extends State<FloraInfoDisplay> {
               widget.flora.numsightings.toString(),
               style: Theme.of(context).textTheme.headlineMedium,
             ), 
-            FloatingActionButton(onPressed: widget.flora.addSighting, child: Icon(Icons.add)),
+            FloatingActionButton(onPressed: () {setState(() {widget.flora.addSighting();
+            });}, child: Icon(Icons.add)),
             ],
             ),
             
