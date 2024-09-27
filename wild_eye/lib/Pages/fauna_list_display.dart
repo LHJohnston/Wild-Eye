@@ -6,8 +6,8 @@ import 'package:wild_eye/Widgets/fauna_list.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
 
 class FaunaList extends StatefulWidget {
-  const FaunaList({super.key, required this.camera,});
-  final CameraDescription camera;
+  const FaunaList({super.key, /*required this.camera*/});
+  //final CameraDescription camera;
   @override
   State createState() => _FaunaListState();
 }

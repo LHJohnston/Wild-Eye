@@ -30,14 +30,14 @@ class FloraFaunaButtons extends StatelessWidget {
       //mainAxisSize: MainAxisSize.max,
       children: <Widget>[ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => FloraList(camera: thecamera
+                builder: (context) => FloraList(
                 ),
               ),
             );},
        child: const Text('Flora')), 
        ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => FaunaList(camera: thecamera
+                builder: (context) => FaunaList(
                 ),
               ),
             );}, 
@@ -56,8 +56,6 @@ class ButtonSection extends StatelessWidget {
               children: <Widget>[
                 ElevatedButton(onPressed: () {},
                 child: const Icon(Icons.location_on)),
-                ElevatedButton(onPressed: (){},
-                child: const Icon(Icons.add),),
               ]
             );
   

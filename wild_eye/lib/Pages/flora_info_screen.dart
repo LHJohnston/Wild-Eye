@@ -29,12 +29,15 @@ class _FloraInfoDisplayState extends State<FloraInfoDisplay> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.flora.getName())
       ),
-      body: const Center(
+      body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            
-            ],
+          children: [
+            /*ListView.builder(itemCount: widget.flora.getLocations().length, itemBuilder: (BuildContext context, int index){
+              return Container(height: 50, child: Center(child: Text('${widget.flora.getLocations()[index]}'),),);
+            },),*/
+            Text(widget.flora.getinfo())
+      
+          ]
         ),
        
       ),

@@ -93,16 +93,6 @@ class _ToDoDialogState extends State<FloraDialog> {
         controller: _sightingsController,
         decoration: const InputDecoration(hintText: "Number spotted"),
         ),
-        /*FloatingActionButton(
-            child: const Icon(Icons.camera),
-            key: Key('Add Picture'), 
-            onPressed: () async{await Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => TakePictureScreen(camera: cameraOne
-                  ),
-                ),
-        );},
-            )*/
-      //]),
         TextField(
         onChanged: (value) {
           setState(() {
@@ -112,6 +102,15 @@ class _ToDoDialogState extends State<FloraDialog> {
         controller: _commentsController,
         decoration: const InputDecoration(hintText: "Additional Info"),
         ),
+        /*FloatingActionButton(
+            child: const Icon(Icons.camera),
+            key: Key('Add Picture'), 
+            onPressed: () async{await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => TakePictureScreen(camera: cameraOne
+                  ),
+                ),
+        );},
+            )*/
       ],
       ),
       actions: <Widget>[

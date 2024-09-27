@@ -6,8 +6,8 @@ import 'package:wild_eye/Widgets/flora_list.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
 
 class FloraList extends StatefulWidget {
-  const FloraList({super.key, required this.camera,});
-  final CameraDescription camera;
+  const FloraList({super.key, /*required this.camera,*/});
+  //final CameraDescription camera;
   @override
   State createState() => _FloraListState();
 }
@@ -39,7 +39,7 @@ class _FloraListState extends State<FloraList> {
   void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber) {
     setState(() {
       print("Adding new item");
-      Flora flora = Flora(name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)));
+      Flora flora = Flora(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), );
       //_itemSet.add(item);
       items.insert(0, flora);
       textController.clear();
