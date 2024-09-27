@@ -66,7 +66,7 @@ class _FloraListState extends State<FloraList> {
             );
           }).toList(),
         ),
-        floatingActionButton: ElevatedButton(onPressed: () {showDialog(
+        floatingActionButton: FloatingActionButton(onPressed: () {showDialog(
                   context: context,
                   builder: (_) {
                     return FloraDialog(onListAdded: _handleNewItem);
