@@ -54,7 +54,12 @@ class ButtonSection extends StatelessWidget {
     return Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                ElevatedButton(onPressed: () {},
+                ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => MapDisplay(
+                ),
+              ),
+            );},
                 child: const Icon(Icons.location_on)),
               ]
             );
