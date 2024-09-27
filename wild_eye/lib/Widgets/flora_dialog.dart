@@ -83,7 +83,7 @@ class _ToDoDialogState extends State<FloraDialog> {
         controller: _locnumberController,
         decoration: const InputDecoration(hintText: "Location Number"),
         ),
-        Row(children: [
+        //Row(children: [
       TextField(
         onChanged: (value) {
           setState(() {
@@ -102,7 +102,7 @@ class _ToDoDialogState extends State<FloraDialog> {
                 ),
         );},
             )*/
-      ]),
+      //]),
         TextField(
         onChanged: (value) {
           setState(() {
