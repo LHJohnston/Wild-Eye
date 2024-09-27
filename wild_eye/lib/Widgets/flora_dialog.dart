@@ -56,28 +56,6 @@ class _ToDoDialogState extends State<FloraDialog> {
     return AlertDialog(
       title: const Text('Add Item'),
       content: Column(children: [
-          ToggleButtons(
-          isSelected: _toggleButtonSelection,
-          onPressed: (int index){
-            setState(() { 
-              for (int buttonIndex = 0; buttonIndex < _toggleButtonSelection.length; buttonIndex++) {
-                if (buttonIndex == index) {
-                  _toggleButtonSelection[buttonIndex] = true;} 
-                else {
-                  _toggleButtonSelection[buttonIndex] = false;
-            
-              };
-              };
-              },
-            );
-          },
-          children: const <Widget>[
-            Icon(Icons.circle),
-            Icon(Icons.square)
-
-          ],
-
-          ),
        TextField(
         onChanged: (value) {
           setState(() {

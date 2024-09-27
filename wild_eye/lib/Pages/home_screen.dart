@@ -53,12 +53,7 @@ class ButtonSection extends StatelessWidget {
               children: <Widget>[
                 ElevatedButton(onPressed: () {},
                 child: const Icon(Icons.location_on)),
-                ElevatedButton(onPressed: (){
-                  showDialog(
-                  context: context,
-                  builder: (_) {
-                    return FloraDialog(onListAdded: _handleNewItem);
-                  });},
+                ElevatedButton(onPressed: (){},
                 child: const Icon(Icons.add),),
               ]
             );
