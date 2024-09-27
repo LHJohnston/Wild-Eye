@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
-import 'package:wild_eye/Objects/flora.dart';
 import 'package:wild_eye/Pages/fauna_info_screen.dart';
 
 

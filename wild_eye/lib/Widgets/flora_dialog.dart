@@ -1,7 +1,5 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:wild_eye/Objects/flora.dart';
-import 'package:wild_eye/Pages/take_picture.dart';
+
 
 typedef FloraListAddedCallback = Function(
     TextEditingController textConroller, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController locnumber, TextEditingController comments);
@@ -13,9 +11,14 @@ class FloraDialog extends StatefulWidget {
   });
 
   final FloraListAddedCallback onListAdded;
+  
+  
+  
 
   @override
   State<FloraDialog> createState() => _ToDoDialogState();
+
+  
 }
  enum faunaorFlora{
   fauna,
@@ -41,12 +44,12 @@ class _ToDoDialogState extends State<FloraDialog> {
 
   String valueText = "";
   final List<bool> _toggleButtonSelection = faunaorFlora.values.map((faunaorFlora e) => e == faunaorFlora.fauna).toList();
- 
- Future<void> cam() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  final cameras = await availableCameras();
-  final cameraOne = cameras.first;
- } 
+  
+  
+
+  
+
+  
 
 
   
@@ -93,6 +96,17 @@ class _ToDoDialogState extends State<FloraDialog> {
         controller: _sightingsController,
         decoration: const InputDecoration(hintText: "Number spotted"),
         ),
+        //FloatingActionButton(
+            //child: const Icon(Icons.camera),
+            //key: Key('Add Picture'), 
+           // onPressed: () async{await Navigator.of(context).push(
+                 // MaterialPageRoute(builder: (context) => TakePictureScreen(camera: firstCamera
+                 // ),
+                //),
+       // );},
+            //)
+      //]),
+      //,
         TextField(
         onChanged: (value) {
           setState(() {
@@ -102,15 +116,6 @@ class _ToDoDialogState extends State<FloraDialog> {
         controller: _commentsController,
         decoration: const InputDecoration(hintText: "Additional Info"),
         ),
-        /*FloatingActionButton(
-            child: const Icon(Icons.camera),
-            key: Key('Add Picture'), 
-            onPressed: () async{await Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => TakePictureScreen(camera: cameraOne
-                  ),
-                ),
-        );},
-            )*/
       ],
       ),
       actions: <Widget>[

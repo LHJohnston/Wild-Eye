@@ -10,9 +10,13 @@ Future <void> main() async {
 
   final cameras = await availableCameras();
   final cameraOne = cameras.first;
+
+  CameraDescription getCamera(){
+    return cameraOne;
+  }
   runApp(
     MaterialApp(
-      home: HomeScreen(thecamera: cameraOne),
+      home: HomeScreen(theCamera: cameraOne),
     )
   );
 }

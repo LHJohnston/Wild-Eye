@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
-import 'package:wild_eye/Objects/flora.dart';
-import 'package:wild_eye/Objects/location.dart';
-import 'package:wild_eye/Pages/fauna_list_display.dart';
 
 class FaunaInfoDisplay extends StatefulWidget {
   const FaunaInfoDisplay( 

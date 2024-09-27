@@ -14,7 +14,7 @@ class _MapDisplayState extends State<MapDisplay> {
   @override
   Widget build(BuildContext context) {
 return FlutterMap(
-    options: MapOptions(
+    options: const MapOptions(
       initialCenter: LatLng(35.090328, -92.441559), 
       initialZoom: 9.2,
     ),

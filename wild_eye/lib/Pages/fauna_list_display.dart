@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
 import 'package:wild_eye/Objects/location.dart';

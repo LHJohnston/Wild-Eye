@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/flora.dart';
 import 'package:wild_eye/Pages/flora_info_screen.dart';
@@ -9,11 +10,11 @@ typedef ToDoListRemovedCallback = Function(Flora item);
 
 class FloraListItem extends StatefulWidget {
   FloraListItem(
-      {required this.flora,})
+      {required this.flora})
       : super(key: ObjectKey(flora));
 
   final Flora flora;
-  
+
 
   
   TextStyle? _getTextStyle(BuildContext context) {
