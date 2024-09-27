@@ -1,4 +1,7 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:wild_eye/Objects/flora.dart';
+import 'package:wild_eye/Pages/take_picture.dart';
 
 typedef FloraListAddedCallback = Function(
     TextEditingController textConroller, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController locnumber, TextEditingController comments);
@@ -38,10 +41,14 @@ class _ToDoDialogState extends State<FloraDialog> {
 
   String valueText = "";
   final List<bool> _toggleButtonSelection = faunaorFlora.values.map((faunaorFlora e) => e == faunaorFlora.fauna).toList();
-
-  
  
-  
+ Future<void> cam() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  final cameras = await availableCameras();
+  final cameraOne = cameras.first;
+ } 
+
+
   
 
   @override
@@ -49,17 +56,6 @@ class _ToDoDialogState extends State<FloraDialog> {
     return AlertDialog(
       title: const Text('Add Item'),
       content: Column(children: [
-        /*DropdownButton<faunaorFlora>(
-          value: faunaorFlora classType,
-          onChanged: (faunaorFlora? newValue){
-            setState(() {
-              classType = newValue!;
-            });
-          },
-          icon: const Icon(Icons.arrow_downward), 
-          items: faunaorFlora.values.map((faunaorFlora classType){
-            return DropdownMenuItem<faunaorFlora>(value: classType, child: Text(classType.name.toString()));
-          }).toList()),*/
           ToggleButtons(
           isSelected: _toggleButtonSelection,
           onPressed: (int index){
@@ -103,6 +99,7 @@ class _ToDoDialogState extends State<FloraDialog> {
         controller: _locnumberController,
         decoration: const InputDecoration(hintText: "Location Number"),
         ),
+        Row(children: [
       TextField(
         onChanged: (value) {
           setState(() {
@@ -112,6 +109,16 @@ class _ToDoDialogState extends State<FloraDialog> {
         controller: _sightingsController,
         decoration: const InputDecoration(hintText: "Number spotted"),
         ),
+        /*FloatingActionButton(
+            child: const Icon(Icons.camera),
+            key: Key('Add Picture'), 
+            onPressed: () async{await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => TakePictureScreen(camera: cameraOne
+                  ),
+                ),
+        );},
+            )*/
+      ]),
         TextField(
         onChanged: (value) {
           setState(() {

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:wild_eye/Widgets/flora_dialog.dart';
 import 'package:wild_eye/pages/flora_list_display.dart';
 import 'package:wild_eye/pages/fauna_list_display.dart';
 import 'package:wild_eye/pages/map_display.dart';
@@ -52,7 +53,12 @@ class ButtonSection extends StatelessWidget {
               children: <Widget>[
                 ElevatedButton(onPressed: () {},
                 child: const Icon(Icons.location_on)),
-                ElevatedButton(onPressed: (){},
+                ElevatedButton(onPressed: (){
+                  showDialog(
+                  context: context,
+                  builder: (_) {
+                    return FloraDialog(onListAdded: _handleNewItem);
+                  });},
                 child: const Icon(Icons.add),),
               ]
             );
