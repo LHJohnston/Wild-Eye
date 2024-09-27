@@ -15,18 +15,6 @@ class _FaunaListState extends State<FaunaList> {
   final List<Fauna> items = [Fauna(name: "add more fauna", location: Location(locationName:"here", numItems: 5) )];
   final _itemSet = <Fauna>{};
 
-  void _handleListChanged(Fauna item) {
-    setState(() {
-      // When a user changes what's in the list, you need
-      // to change _itemSet inside a setState call to
-      // trigger a rebuild.
-      // The framework then calls build, below,
-      // which updates the visual appearance of the app.
-
-
-    });
-  }
-
 
   void _handleDeleteItem(Fauna item) {
     setState(() {
@@ -34,10 +22,10 @@ class _FaunaListState extends State<FaunaList> {
       items.remove(item);
     });
   }
-   void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber) {
+    void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber) {
     setState(() {
       print("Adding new item");
-      Fauna fauna = Fauna(name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)));
+      Fauna fauna = Fauna(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), );
       //_itemSet.add(item);
       items.insert(0, fauna);
       textController.clear();
@@ -48,8 +36,6 @@ class _FaunaListState extends State<FaunaList> {
       
     });
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,5 +59,13 @@ class _FaunaListState extends State<FaunaList> {
                 child: const Icon(Icons.add),),
         );
   }
-}
+
+  }
+
+
+  
+  
+
+
+  
 

@@ -10,7 +10,7 @@ class Flora {
 
   final String? info;
 
-  final int numsightings;
+  int numsightings;
 
  
   
@@ -37,6 +37,11 @@ class Flora {
   }
   String getinfo(){
     return info.toString();
+  }
+
+  void addSighting(){
+    //setState();
+    numsightings ++;
   }
   
 }
