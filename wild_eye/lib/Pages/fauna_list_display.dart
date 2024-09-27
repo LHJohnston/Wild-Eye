@@ -26,10 +26,25 @@ class _FaunaListState extends State<FaunaList> {
     });
   }
 
+
   void _handleDeleteItem(Fauna item) {
     setState(() {
       print("Deleting item");
       items.remove(item);
+    });
+  }
+   void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber) {
+    setState(() {
+      print("Adding new item");
+      Fauna fauna = Fauna(name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)));
+      //_itemSet.add(item);
+      items.insert(0, fauna);
+      textController.clear();
+      txtcontroller.clear();
+      txtcontrol.clear();
+      comments.clear();
+      locnumber.clear();
+      
     });
   }
 
