@@ -19,7 +19,9 @@ class HomeScreen extends StatefulWidget {
 
 
 class FloraFaunaButtons extends StatelessWidget {
-  const FloraFaunaButtons({super.key, CameraDescription cam});
+  const FloraFaunaButtons({super.key});
+  
+  get thecamera => null;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FloraFaunaButtons(thecamera),
+            FloraFaunaButtons(),
             ButtonSection(),
             ],
         ),
