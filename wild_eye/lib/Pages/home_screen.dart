@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
             }, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0),)),
-             child: const Text('Flora'),)),
+             child: Text('Flora', style: new TextStyle(fontSize: 35.0,)),)),
             SizedBox(height: 10),
             Expanded(child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
             },  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
-            child: const Text('Fauna'),)),
+            child: Text('Fauna', style: new TextStyle(fontSize: 35.0,)),)),
             
             //FloraFaunaButtons(),
             //ButtonSection(),
