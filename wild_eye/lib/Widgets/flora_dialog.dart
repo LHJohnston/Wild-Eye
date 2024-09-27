@@ -59,12 +59,18 @@ class _ToDoDialogState extends State<FloraDialog> {
           ToggleButtons(
           isSelected: _toggleButtonSelection,
           onPressed: (int index){
-            setState(() {
-              _toggleButtonSelection[index] = !_toggleButtonSelection[index];
-                },
-                );
+            setState(() { 
+              for (int buttonIndex = 0; buttonIndex < _toggleButtonSelection.length; buttonIndex++) {
+                if (buttonIndex == index) {
+                  _toggleButtonSelection[buttonIndex] = true;} 
+                else {
+                  _toggleButtonSelection[buttonIndex] = false;
+            
+              };
+              };
               },
-          
+            );
+          },
           children: const <Widget>[
             Icon(Icons.circle),
             Icon(Icons.square)
