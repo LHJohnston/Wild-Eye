@@ -32,9 +32,7 @@ class _FloraInfoDisplayState extends State<FloraInfoDisplay> {
       body: Center(
         child: Column(
           children: [
-            /*ListView.builder(itemCount: widget.flora.getLocations().length, itemBuilder: (BuildContext context, int index){
-              return Container(height: 50, child: Center(child: Text('${widget.flora.getLocations()[index]}'),),);
-            },),*/
+            
             const SizedBox(height: 20),
               Container(
                 width: 300,
