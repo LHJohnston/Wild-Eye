@@ -47,7 +47,7 @@ class _FloraInfoDisplayState extends State<FloraInfoDisplay> {
                 width: 200,
                 height: 50,
                 color: Colors.grey.shade300,
-                child:  Center(child: Text("set location here", 
+                child:  Center(child: Text(widget.flora.getLocationName(), 
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                 )
                 )

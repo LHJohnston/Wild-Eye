@@ -1,10 +1,14 @@
 import 'dart:io';
 
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:wild_eye/Pages/home_screen.dart';
+import 'package:wild_eye/Pages/take_picture.dart';
 
 class DisplayPictureScreen extends StatelessWidget {
-  const DisplayPictureScreen({super.key, required this.imagePath});
+  const DisplayPictureScreen({super.key, required this.imagePath, required this.theCamera});
 
+  final CameraDescription theCamera;
   final String imagePath;
 
   @override
@@ -14,6 +18,15 @@ class DisplayPictureScreen extends StatelessWidget {
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.
       body: Image.file(File(imagePath)),
-    );
+      persistentFooterButtons: [ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(theCamera: theCamera)
+                ),
+       );
+       }, 
+       child: const Text ('Home'))]);
+    
+    
+  
   }
 }

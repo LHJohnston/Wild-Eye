@@ -43,5 +43,9 @@ class Flora {
     //setState();
     numsightings ++;
   }
+
+  String getLocationName(){
+    return location.getLocationName();
+  }
   
 }
