@@ -59,13 +59,14 @@ class _FaunaInfoDisplayState extends State<FaunaInfoDisplay> {
               const Text(
               'Number sighted:', style: TextStyle(fontSize: 20)
             ),
-            Row(children: [
-            Text(
+            Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+              Text(
               widget.fauna.numsightings.toString(),
               style: Theme.of(context).textTheme.headlineMedium,
-            ), 
-           FloatingActionButton(onPressed: () {setState(() {widget.fauna.addSighting();
-            });}, child: Icon(Icons.add))
+            ),
+            const SizedBox(width: 20),
+            FloatingActionButton(onPressed: () {setState(() {widget.fauna.addSighting();
+            });}, child: Icon(Icons.add)),
             ],
             ),
             

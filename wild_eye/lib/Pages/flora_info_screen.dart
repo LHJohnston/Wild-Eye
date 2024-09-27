@@ -59,11 +59,12 @@ class _FloraInfoDisplayState extends State<FloraInfoDisplay> {
               const Text(
               'Number sighted:', style: TextStyle(fontSize: 20)
             ),
-            Row(children: [
-            Text(
+            Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+              Text(
               widget.flora.numsightings.toString(),
               style: Theme.of(context).textTheme.headlineMedium,
-            ), 
+            ),
+            const SizedBox(width: 20),
             FloatingActionButton(onPressed: () {setState(() {widget.flora.addSighting();
             });}, child: Icon(Icons.add)),
             ],
