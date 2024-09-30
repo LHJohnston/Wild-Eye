@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wild_eye/Pages/take_picture.dart';
 import 'package:wild_eye/pages/flora_list_display.dart';
 import 'package:wild_eye/pages/fauna_list_display.dart';
+import 'package:wild_eye/pages/map_display.dart';
 
 
 
@@ -30,9 +31,42 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            FloraFaunaButtons(camera: widget.theCamera),
-            const ButtonSection(),
+            Expanded(child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FloraList(camera: widget.theCamera),
+              ),
+            );
+            }, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0),)),
+             child: Text('Flora', style: new TextStyle(fontSize: 35.0,)),)),
+            SizedBox(height: 10),
+            Expanded(child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FaunaList(),
+              ),
+            );
+            }, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0),)),
+             child: Text('Fauna', style: new TextStyle(fontSize: 35.0,)),)),
+
+            Row(children: [
+              ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => MapDisplay(
+                ),
+              ),
+               );},
+                child: const Icon(Icons.location_on)),
+              ElevatedButton(onPressed: () async {await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => TakePictureScreen(camera: widget.theCamera)
+                ),
+                );
+               }, 
+              child: const Icon(Icons.camera_alt))
+
+            ])
+            
             ],
         ),
        
