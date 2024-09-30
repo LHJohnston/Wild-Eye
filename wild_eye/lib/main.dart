@@ -16,6 +16,7 @@ Future <void> main() async {
   }
   runApp(
     MaterialApp(
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.green)),
       home: HomeScreen(theCamera: cameraOne),
     )
   );
