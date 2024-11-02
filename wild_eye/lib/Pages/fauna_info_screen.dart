@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
 
@@ -29,17 +30,17 @@ class _FaunaInfoDisplayState extends State<FaunaInfoDisplay> {
       body: Center(
         child: Column(
           children: [
-            
+            if(widget.fauna.getimage() != null)...[
             const SizedBox(height: 20),
               Container(
                 width: 300,
                 height: 150,
                 color: Colors.grey.shade300,
-                child:  Center(child: Text("picture", 
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                )
+                child:  Center(child: 
+                Image(image: ResizeImage(Image.file(File(widget.fauna.getimage()!.path)).image, width: 100, height:100)),
                 )
               ), 
+            ], 
             const SizedBox(height: 10),
             Text("Location:", style: TextStyle(fontSize: 20)),
             const SizedBox(height: 10),

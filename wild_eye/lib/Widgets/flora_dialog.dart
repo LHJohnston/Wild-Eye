@@ -1,15 +1,20 @@
+
+import 'dart:io';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:wild_eye/Pages/take_picture.dart';
 
 
 typedef FloraListAddedCallback = Function(
-    TextEditingController textConroller, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController locnumber, TextEditingController comments);
+    TextEditingController textConroller, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController locnumber, TextEditingController comments, XFile? img);
 
 class FloraDialog extends StatefulWidget {
   const FloraDialog({
     super.key,
+    required this.dialogCamera,
     required this.onListAdded,
   });
-
+  final CameraDescription dialogCamera;
   final FloraListAddedCallback onListAdded;
   
   
@@ -41,7 +46,9 @@ class _ToDoDialogState extends State<FloraDialog> {
       textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.green);
   final ButtonStyle noStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
-
+  XFile? imagePath;
+  Image photo = Image(image: AssetImage('images/nophotoimage.jpg'));
+  String pathstring = "wild_eye/images/nophotoimage.jpg";
   String valueText = "";
   final List<bool> _toggleButtonSelection = faunaorFlora.values.map((faunaorFlora e) => e == faunaorFlora.fauna).toList();
   
@@ -58,7 +65,8 @@ class _ToDoDialogState extends State<FloraDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Add Item'),
-      content: Column(children: [
+      content: SingleChildScrollView(child: Column(children: [
+        Image(image: ResizeImage(photo.image, width: 100, height:100)),
        TextField(
         onChanged: (value) {
           setState(() {
@@ -111,13 +119,42 @@ class _ToDoDialogState extends State<FloraDialog> {
         onChanged: (value) {
           setState(() {
             valueText = value;
+            
           });
         },
         controller: _commentsController,
         decoration: const InputDecoration(hintText: "Additional Info"),
         ),
+        
+        //Image.file(File(imagePath)),
+        
+        //photo button
+         ElevatedButton(onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context){
+              return TakePictureScreen(camera: widget.dialogCamera);
+            },
+          ).then((img) {
+            imagePath = img; 
+            setState(() {
+              pathstring = (imagePath != null) ? imagePath!.path : 'yes';
+              photo = Image.file(File(pathstring));
+            });
+            
+          });
+
+          }, 
+              child: const Icon(Icons.camera_alt)
+        ),
+        //Text(pathstring),
+        //Container(
+        //  decoration: BoxDecoration(image: DecorationImage(image: Image.file(File(pathstring)).image)),
+        //),
+        
+        
       ],
-      ),
+      ), ),
       actions: <Widget>[
         ElevatedButton(
           key: const Key("CancelButton"),
@@ -130,6 +167,7 @@ class _ToDoDialogState extends State<FloraDialog> {
             });
           },
         ),
+        
 
         // https://stackoverflow.com/questions/52468987/how-to-turn-disabled-button-into-enabled-button-depending-on-conditions
         ValueListenableBuilder<TextEditingValue>(
@@ -142,7 +180,7 @@ class _ToDoDialogState extends State<FloraDialog> {
                   ? () {
                     
                       setState(() {
-                        widget.onListAdded(_nameController, _locationController, _sightingsController, _commentsController, _locnumberController);
+                        widget.onListAdded(_nameController, _locationController, _sightingsController, _commentsController, _locnumberController, imagePath);
                         Navigator.pop(context);
                       });
                     }

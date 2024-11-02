@@ -1,8 +1,8 @@
-
+import 'package:camera/camera.dart';
 import 'package:wild_eye/Objects/location.dart';
 
 class Flora {
-  Flora({this.info, this.numsightings=1, required this.name, required this.location});
+  Flora({this.info, this.numsightings=1, this.image, required this.name, required this.location});
 
   final String name;
 
@@ -11,6 +11,8 @@ class Flora {
   final String? info;
 
   int numsightings;
+
+  XFile? image;
 
  
   
@@ -35,6 +37,11 @@ class Flora {
   String getName(){
     return name;
   }
+
+  XFile? getimage(){
+    return image;
+  }
+
   String getinfo(){
     return info.toString();
   }

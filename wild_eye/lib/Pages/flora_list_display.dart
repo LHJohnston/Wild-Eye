@@ -36,10 +36,10 @@ class _FloraListState extends State<FloraList> {
     });
   }
 
-  void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber) {
+  void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber, XFile? img) {
     setState(() {
       print("Adding new item");
-      Flora flora = Flora(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), );
+      Flora flora = Flora(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), image: img);
       //_itemSet.add(item);
       items.insert(0, flora);
       textController.clear();
@@ -70,7 +70,7 @@ class _FloraListState extends State<FloraList> {
         floatingActionButton: FloatingActionButton(onPressed: () {showDialog(
                   context: context,
                   builder: (_) {
-                    return FloraDialog(onListAdded: _handleNewItem);
+                    return FloraDialog(dialogCamera: widget.camera, onListAdded: _handleNewItem);
                   });}, 
                 child: const Icon(Icons.add),),
         );

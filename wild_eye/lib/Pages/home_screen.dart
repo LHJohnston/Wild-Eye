@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 10),
             Expanded(child: ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => FaunaList(),
+                builder: (context) => FaunaList(camera: widget.theCamera),
               ),
             );
             }, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0),)),
@@ -57,13 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
                );},
                 child: const Icon(Icons.location_on)),
-              ElevatedButton(onPressed: () async {await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => TakePictureScreen(camera: widget.theCamera)
-                ),
-                );
-               }, 
-              child: const Icon(Icons.camera_alt))
+              
 
             ])
             
@@ -97,7 +91,7 @@ class FloraFaunaButtons extends StatelessWidget {
        child: const Text('Flora')), 
        ElevatedButton(onPressed: () async {await Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => FaunaList()
+                builder: (context) => FaunaList(camera: camera)
                 ),
               );
           },

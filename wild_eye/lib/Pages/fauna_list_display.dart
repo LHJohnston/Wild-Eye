@@ -3,10 +3,13 @@ import 'package:wild_eye/Objects/fauna.dart';
 import 'package:wild_eye/Objects/location.dart';
 import 'package:wild_eye/Widgets/fauna_list.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
+import 'package:camera/camera.dart';
 
 class FaunaList extends StatefulWidget {
-  const FaunaList({super.key, /*required this.camera*/});
-  //final CameraDescription camera;
+  const FaunaList({required this.camera, super.key});
+  
+  final CameraDescription camera;
+  
   @override
   State createState() => _FaunaListState();
 }
@@ -22,10 +25,10 @@ class _FaunaListState extends State<FaunaList> {
       items.remove(item);
     });
   }
-    void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber) {
+    void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber, XFile? img) {
     setState(() {
       print("Adding new item");
-      Fauna fauna = Fauna(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), );
+      Fauna fauna = Fauna(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), image: img);
       //_itemSet.add(item);
       items.insert(0, fauna);
       textController.clear();
@@ -54,7 +57,7 @@ class _FaunaListState extends State<FaunaList> {
         floatingActionButton: FloatingActionButton(onPressed: () {showDialog(
                   context: context,
                   builder: (_) {
-                    return FloraDialog(onListAdded: _handleNewItem);
+                    return FloraDialog(dialogCamera: widget.camera, onListAdded: _handleNewItem);
                   });}, 
                 child: const Icon(Icons.add),),
         );

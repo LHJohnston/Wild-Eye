@@ -1,14 +1,17 @@
 //add more info
+import 'package:camera/camera.dart';
 import 'package:wild_eye/Objects/location.dart';
 
 class Fauna {
-  Fauna({this.info, this.numsightings=1, required this.name, required this.location});
+  Fauna({this.info, this.numsightings=1, required this.name, this.image, required this.location});
 
   final String name;
 
   final Location location;
 
   final String? info;
+
+  XFile? image;
 
 int numsightings;
 
@@ -35,6 +38,11 @@ int numsightings;
   String getName(){
     return name;
   }
+
+  XFile? getimage(){
+    return image;
+  }
+
   String getinfo(){
     return info.toString();
   }

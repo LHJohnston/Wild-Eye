@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/flora.dart';
 
@@ -6,6 +7,7 @@ class FloraInfoDisplay extends StatefulWidget {
 {required this.flora,})
       : super(key: const ObjectKey(Flora));
   final Flora flora;
+  //Image photo = Image(image: AssetImage('images/nophotoimage.jpg'));
   @override
   State createState() => _FloraInfoDisplayState();
 
@@ -29,17 +31,17 @@ class _FloraInfoDisplayState extends State<FloraInfoDisplay> {
       body: Center(
         child: Column(
           children: [
-            
+            if(widget.flora.getimage() != null)...[
             const SizedBox(height: 20),
               Container(
                 width: 300,
                 height: 150,
                 color: Colors.grey.shade300,
-                child:  Center(child: Text("picture", 
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                )
+                child:  Center(child: 
+                Image(image: ResizeImage(Image.file(File(widget.flora.getimage()!.path)).image, width: 100, height:100)),
                 )
               ), 
+            ],
             const SizedBox(height: 10),
             Text("Location:", style: TextStyle(fontSize: 20)),
             const SizedBox(height: 10),
