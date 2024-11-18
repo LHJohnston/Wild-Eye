@@ -10,10 +10,11 @@ typedef ToDoListRemovedCallback = Function(Flora item);
 
 class FloraListItem extends StatefulWidget {
   FloraListItem(
-      {required this.flora})
+      {required this.flora, required this.onDelete})
       : super(key: ObjectKey(flora));
 
   final Flora flora;
+  final ToDoListRemovedCallback onDelete;
 
 
   
@@ -46,6 +47,7 @@ class _FloraListItemState extends State<FloraListItem> {
       
       onLongPress: 
            () {
+            widget.onDelete(widget.flora);
             }
           ,
       leading: ElevatedButton(
