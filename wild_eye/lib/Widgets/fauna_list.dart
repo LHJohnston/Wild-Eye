@@ -9,10 +9,11 @@ typedef ToDoListRemovedCallback = Function(Fauna item);
 
 class FaunaListItem extends StatefulWidget {
   FaunaListItem(
-      {required this.fauna,})
+      {required this.fauna, required this.onDelete})
       : super(key: ObjectKey(fauna));
 
   final Fauna fauna;
+  final ToDoListRemovedCallback onDelete;
   
 
   
@@ -44,6 +45,7 @@ class _FaunaListItemState extends State<FaunaListItem> {
       },
       onLongPress: 
            () {
+            widget.onDelete(widget.fauna);
             }
           ,
       leading: ElevatedButton(
