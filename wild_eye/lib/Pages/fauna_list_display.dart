@@ -50,6 +50,7 @@ class _FaunaListState extends State<FaunaList> {
           children: items.map((item) {
             return FaunaListItem(
               fauna: item,
+              onDelete: _handleDeleteItem,
               
             );
           }).toList(),
