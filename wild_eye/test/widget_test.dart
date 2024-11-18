@@ -26,4 +26,27 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+
+
+  testWidgets('Flora item is deleted on long press', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: FloraList(),
+      ),
+    );
+    expect(find.text('add more flora'), findsOneWidget);
+
+    // finds the ListTile
+    final listItemFinder = find.byType(ListTile);
+
+    // check there is only one
+    expect(listItemFinder, findsOneWidget);
+
+    // delete
+    await tester.longPress(listItemFinder);
+
+    // check if deleted
+    expect(find.text('add more flora'), findsNothing);
+    expect(listItemFinder, findsNothing);
+  });
 }
