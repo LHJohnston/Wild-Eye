@@ -63,7 +63,7 @@ class _FloraListState extends State<FloraList> {
           children: items.map((item) {
             return FloraListItem(
               flora: item,
-              
+              onDelete: _handleDeleteItem,
             );
           }).toList(),
         ),
