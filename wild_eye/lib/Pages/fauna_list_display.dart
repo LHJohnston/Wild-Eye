@@ -8,7 +8,7 @@ import 'package:camera/camera.dart';
 class FaunaList extends StatefulWidget {
   const FaunaList({required this.camera, super.key});
   
-  final CameraDescription camera;
+  final camera;
   
   @override
   State createState() => _FaunaListState();

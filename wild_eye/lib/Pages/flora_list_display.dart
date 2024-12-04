@@ -7,7 +7,7 @@ import 'package:wild_eye/Widgets/flora_dialog.dart';
 
 class FloraList extends StatefulWidget {
   const FloraList({required this.camera, super.key, });
-  final CameraDescription camera;
+  final camera;
   @override
   State createState() => _FloraListState();
 }

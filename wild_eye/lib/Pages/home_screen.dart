@@ -10,7 +10,7 @@ import 'package:wild_eye/pages/map_display.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.theCamera});
   // This widget is the home page of your application
- final CameraDescription theCamera;
+ final theCamera;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 
