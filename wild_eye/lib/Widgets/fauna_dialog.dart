@@ -6,7 +6,8 @@ import 'package:wild_eye/Objects/flora.dart';
 import 'package:wild_eye/Objects/location.dart';
 import 'package:wild_eye/Pages/take_picture.dart';
 
-typedef OnListAddedCallback = Function(Fauna fauna, XFile? img);
+typedef OnListAddedCallback = Function(
+    String name, String locationName, int numItems, XFile? xfile);
 
 class FaunaDialog extends StatefulWidget {
   const FaunaDialog({
@@ -166,13 +167,9 @@ class _ToDoDialogState extends State<FaunaDialog> {
                   ? () {
                       setState(() {
                         widget.onListAdded(
-                            Fauna(
-                                name: _nameController.text,
-                                location: Location(
-                                    locationName: _locationController.text,
-                                    numItems:
-                                        int.parse(_locnumberController.text)),
-                                image: imagePath),
+                            _nameController.text,
+                            _locationController.text,
+                            int.parse(_locnumberController.text),
                             imagePath);
                         Navigator.pop(context);
                       });

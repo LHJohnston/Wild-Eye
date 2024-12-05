@@ -5,7 +5,8 @@ import 'package:wild_eye/Objects/location.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
 import 'package:wild_eye/Widgets/flora_list.dart';
 
-typedef OnListAddedCallback = Function(Flora flora, XFile? img);
+typedef OnListAddedCallback = Function(
+    String name, String locationName, int numItems, XFile? xfile);
 typedef OnListRemovedCallback = Function(Flora flora);
 
 class FloraList extends StatefulWidget {

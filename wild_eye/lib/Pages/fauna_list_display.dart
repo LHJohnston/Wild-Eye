@@ -6,7 +6,8 @@ import 'package:wild_eye/Widgets/fauna_list.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
 import 'package:camera/camera.dart';
 
-typedef OnListAddedCallback = Function(Fauna fauna, XFile? img);
+typedef OnListAddedCallback = Function(
+    String name, String locationName, int numItems, XFile? xfile);
 typedef OnListRemovedCallback = Function(Fauna fauna);
 
 class FaunaList extends StatefulWidget {

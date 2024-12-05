@@ -32,16 +32,24 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _handleNewItem(Flora flora, XFile? xfile) {
+  void _handleNewItem(
+      String name, String locationName, int numItems, XFile? xfile) {
     setState(() {
+      Flora flora = Flora(
+          name: name,
+          location: Location(locationName: locationName, numItems: numItems));
       print("Adding new item");
       //_itemSet.add(item);
       flora_list.add(flora);
     });
   }
 
-  void _handleNewFaunaItem(Fauna fauna, XFile? xfile) {
+  void _handleNewFaunaItem(
+      String name, String locationName, int numItems, XFile? xfile) {
     setState(() {
+      Fauna fauna = Fauna(
+          name: name,
+          location: Location(locationName: locationName, numItems: numItems));
       fauna_list.add(fauna);
     });
   }
