@@ -41,21 +41,21 @@ class _FloraListState extends State<FloraList> {
 
   void _handleDeleteItem(Flora flora) {
     setState(() {
-      print("Deleting item");
-      //_itemSet.remove(item);
-      widget.items.remove(flora);
+      // print("Deleting item");
+      // //_itemSet.remove(item);
+      // widget.items.remove(flora);
     });
   }
 
   void _handleNewItem(
       String name, String locationName, int numItems, XFile? xfile) {
     setState(() {
-      Flora flora = Flora(
-          name: name,
-          location: Location(locationName: locationName, numItems: numItems));
-      print("Adding new item");
-      //_itemSet.add(item);
-      widget.items.add(flora);
+      //   Flora flora = Flora(
+      //       name: name,
+      //       location: Location(locationName: locationName, numItems: numItems));
+      //   print("Adding new item");
+      //   //_itemSet.add(item);
+      //   widget.items.add(flora);
     });
   }
 

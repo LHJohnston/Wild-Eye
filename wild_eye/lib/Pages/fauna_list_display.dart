@@ -33,16 +33,16 @@ class _FaunaListState extends State<FaunaList> {
   void _handleNewFaunaItem(
       String name, String locationName, int numItems, XFile? xfile) {
     setState(() {
-      Fauna fauna = Fauna(
-          name: name,
-          location: Location(locationName: locationName, numItems: numItems));
-      widget.items.add(fauna);
+      // Fauna fauna = Fauna(
+      //     name: name,
+      //     location: Location(locationName: locationName, numItems: numItems));
+      // widget.items.add(fauna);
     });
   }
 
   void _handleDeleteFaunaItem(Fauna fauna) {
     setState(() {
-      widget.items.remove(fauna);
+      // widget.items.remove(fauna);
     });
   }
 
