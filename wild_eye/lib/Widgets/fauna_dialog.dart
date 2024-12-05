@@ -14,9 +14,11 @@ class FaunaDialog extends StatefulWidget {
     super.key,
     required this.dialogCamera,
     required this.onListAdded,
+    required this.onListAddeds,
   });
   final CameraDescription dialogCamera;
   final OnListAddedCallback onListAdded;
+  final OnListAddedCallback onListAddeds;
 
   @override
   State<FaunaDialog> createState() => _ToDoDialogState();
@@ -167,6 +169,11 @@ class _ToDoDialogState extends State<FaunaDialog> {
                   ? () {
                       setState(() {
                         widget.onListAdded(
+                            _nameController.text,
+                            _locationController.text,
+                            int.parse(_locnumberController.text),
+                            imagePath);
+                        widget.onListAddeds(
                             _nameController.text,
                             _locationController.text,
                             int.parse(_locnumberController.text),

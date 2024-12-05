@@ -21,8 +21,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Flora> flora_list = [];
-  List<Fauna> fauna_list = [];
+  List<Flora> flora_list = [
+    Flora(
+        name: "Add more flora",
+        location: Location(locationName: "locationName", numItems: 1))
+  ];
+  List<Fauna> fauna_list = [
+    Fauna(
+        name: "Add more fauna",
+        location: Location(locationName: "locationName", numItems: 1))
+  ];
 
   void _handleDeleteItem(Flora flora) {
     setState(() {

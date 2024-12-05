@@ -30,17 +30,19 @@ class FaunaList extends StatefulWidget {
 class _FaunaListState extends State<FaunaList> {
   final _itemSet = <Fauna>{};
 
-  void _handleDeleteItem(Fauna item) {
+  void _handleNewFaunaItem(
+      String name, String locationName, int numItems, XFile? xfile) {
     setState(() {
-      print("Deleting item");
-      widget.items.remove(item);
+      Fauna fauna = Fauna(
+          name: name,
+          location: Location(locationName: locationName, numItems: numItems));
+      widget.items.add(fauna);
     });
   }
 
-  void _handleNewItem(Fauna fauna, XFile? img) {
+  void _handleDeleteFaunaItem(Fauna fauna) {
     setState(() {
-      print("Adding new item");
-      widget.items.add(fauna);
+      widget.items.remove(fauna);
     });
   }
 
@@ -54,9 +56,9 @@ class _FaunaListState extends State<FaunaList> {
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         children: widget.items.map((item) {
           return FaunaListItem(
-            fauna: item,
-            onDelete: widget.onDeleteItem,
-          );
+              fauna: item,
+              onDelete: widget.onDeleteItem,
+              onDeletes: _handleDeleteFaunaItem);
         }).toList(),
       ),
       floatingActionButton: FloatingActionButton(
@@ -66,8 +68,10 @@ class _FaunaListState extends State<FaunaList> {
                 context: context,
                 builder: (_) {
                   return FaunaDialog(
-                      dialogCamera: widget.camera,
-                      onListAdded: widget.onListAdded);
+                    dialogCamera: widget.camera,
+                    onListAdded: widget.onListAdded,
+                    onListAddeds: _handleNewFaunaItem,
+                  );
                 });
           });
         },
