@@ -2,18 +2,29 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/flora.dart';
 import 'package:wild_eye/Objects/location.dart';
-import 'package:wild_eye/Widgets/flora_list.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
+import 'package:wild_eye/Widgets/flora_list.dart';
+
+typedef OnListAddedCallback = Function(
+    String name, String locationName, int numItems, XFile? xfile);
+typedef OnListRemovedCallback = Function(Flora flora);
 
 class FloraList extends StatefulWidget {
-  const FloraList({required this.camera, super.key, });
+  const FloraList(
+      {required this.camera,
+      super.key,
+      required this.items,
+      required this.onListAdded,
+      required this.onDeleteItem});
   final camera;
+  final List<Flora> items;
+  final OnListAddedCallback onListAdded;
+  final OnListRemovedCallback onDeleteItem;
   @override
   State createState() => _FloraListState();
 }
 
 class _FloraListState extends State<FloraList> {
-  final List<Flora> items = [Flora(name: "add more flora", location: Location(locationName:"here", numItems: 5) )];
   final _itemSet = <Flora>{};
 
   /*void _handleListChanged(Flora item) {
@@ -30,50 +41,54 @@ class _FloraListState extends State<FloraList> {
 
   void _handleDeleteItem(Flora flora) {
     setState(() {
-      print("Deleting item");
-      //_itemSet.remove(item);
-      items.remove(flora);
+      // print("Deleting item");
+      // //_itemSet.remove(item);
+      // widget.items.remove(flora);
     });
   }
 
-  void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber, XFile? img) {
+  void _handleNewItem(
+      String name, String locationName, int numItems, XFile? xfile) {
     setState(() {
-      print("Adding new item");
-      Flora flora = Flora(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), image: img);
-      //_itemSet.add(item);
-      items.insert(0, flora);
-      textController.clear();
-      txtcontroller.clear();
-      txtcontrol.clear();
-      comments.clear();
-      locnumber.clear();
-      
+      //   Flora flora = Flora(
+      //       name: name,
+      //       location: Location(locationName: locationName, numItems: numItems));
+      //   print("Adding new item");
+      //   //_itemSet.add(item);
+      //   widget.items.add(flora);
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Flora'),
-        ),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: items.map((item) {
-            return FloraListItem(
-              flora: item,
-              onDelete: _handleDeleteItem,
-            );
-          }).toList(),
-        ),
-        floatingActionButton: FloatingActionButton(onPressed: () {showDialog(
-                  context: context,
-                  builder: (_) {
-                    return FloraDialog(dialogCamera: widget.camera, onListAdded: _handleNewItem);
-                  });}, 
-                child: const Icon(Icons.add),),
-        );
+      appBar: AppBar(
+        title: const Text('Flora'),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        children: widget.items.map((item) {
+          return FloraListItem(
+            flora: item,
+            onDelete: widget.onDeleteItem,
+            onDeletes: _handleDeleteItem,
+          );
+        }).toList(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (_) {
+                return FloraDialog(
+                  dialogCamera: widget.camera,
+                  onListAdded: widget.onListAdded,
+                  onListAddeds: _handleNewItem,
+                );
+              });
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
   }
 }
-

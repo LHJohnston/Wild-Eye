@@ -1,75 +1,82 @@
 import 'package:flutter/material.dart';
 import 'package:wild_eye/Objects/fauna.dart';
 import 'package:wild_eye/Objects/location.dart';
+import 'package:wild_eye/Widgets/fauna_dialog.dart';
 import 'package:wild_eye/Widgets/fauna_list.dart';
 import 'package:wild_eye/Widgets/flora_dialog.dart';
 import 'package:camera/camera.dart';
 
+typedef OnListAddedCallback = Function(
+    String name, String locationName, int numItems, XFile? xfile);
+typedef OnListRemovedCallback = Function(Fauna fauna);
+
 class FaunaList extends StatefulWidget {
-  const FaunaList({required this.camera, super.key});
-  
+  const FaunaList(
+      {required this.camera,
+      super.key,
+      required this.items,
+      required this.onListAdded,
+      required this.onDeleteItem});
+
   final camera;
-  
+  final List<Fauna> items;
+  final OnListAddedCallback onListAdded;
+  final OnListRemovedCallback onDeleteItem;
+
   @override
   State createState() => _FaunaListState();
 }
 
 class _FaunaListState extends State<FaunaList> {
-  final List<Fauna> items = [Fauna(name: "add more fauna", location: Location(locationName:"here", numItems: 5) )];
   final _itemSet = <Fauna>{};
 
+  void _handleNewFaunaItem(
+      String name, String locationName, int numItems, XFile? xfile) {
+    setState(() {
+      // Fauna fauna = Fauna(
+      //     name: name,
+      //     location: Location(locationName: locationName, numItems: numItems));
+      // widget.items.add(fauna);
+    });
+  }
 
-  void _handleDeleteItem(Fauna item) {
+  void _handleDeleteFaunaItem(Fauna fauna) {
     setState(() {
-      print("Deleting item");
-      items.remove(item);
+      // widget.items.remove(fauna);
     });
   }
-    void _handleNewItem(TextEditingController textController, TextEditingController txtcontroller, TextEditingController txtcontrol, TextEditingController comments, TextEditingController locnumber, XFile? img) {
-    setState(() {
-      print("Adding new item");
-      Fauna fauna = Fauna(info: comments.text, numsightings: int.parse(locnumber.text), name: textController.text, location: Location(locationName:txtcontroller.text, numItems: int.parse(locnumber.text)), image: img);
-      //_itemSet.add(item);
-      items.insert(0, fauna);
-      textController.clear();
-      txtcontroller.clear();
-      txtcontrol.clear();
-      comments.clear();
-      locnumber.clear();
-      
-    });
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Fauna'),
-        ),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          children: items.map((item) {
-            return FaunaListItem(
+      appBar: AppBar(
+        title: const Text('Fauna'),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        children: widget.items.map((item) {
+          return FaunaListItem(
               fauna: item,
-              onDelete: _handleDeleteItem,
-              
-            );
-          }).toList(),
-        ),
-        floatingActionButton: FloatingActionButton(onPressed: () {showDialog(
-                  context: context,
-                  builder: (_) {
-                    return FloraDialog(dialogCamera: widget.camera, onListAdded: _handleNewItem);
-                  });}, 
-                child: const Icon(Icons.add),),
-        );
+              onDelete: widget.onDeleteItem,
+              onDeletes: _handleDeleteFaunaItem);
+        }).toList(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            showDialog(
+                context: context,
+                builder: (_) {
+                  return FaunaDialog(
+                    dialogCamera: widget.camera,
+                    onListAdded: widget.onListAdded,
+                    onListAddeds: _handleNewFaunaItem,
+                  );
+                });
+          });
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
   }
-
-  }
-
-
-  
-  
-
-
-  
-
+}
